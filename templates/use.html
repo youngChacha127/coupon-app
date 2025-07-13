@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head><title>쿠폰 사용</title></head>
+<body>
+<h2>쿠폰 사용</h2>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul>
+      {% for msg in messages %}
+        <li style="color:red;">{{ msg }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+<form method="post">
+  이름: <input type="text" name="name" required><br>
+  수량: 
+  <select name="quantity" required>
+    <option value="1">1장</option>
+    <option value="2">2장</option>
+  </select><br>
+  관리자 비밀번호: <input type="password" name="admin_password" required><br>
+  <button type="submit">사용 등록</button>
+</form>
+<a href="{{ url_for('index') }}">← 메인으로</a>
+</body>
+</html>
